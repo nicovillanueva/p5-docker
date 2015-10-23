@@ -4,6 +4,12 @@ Simply downloads the latest P5 package and installs a few required libraries.
 P5 by default is run by a script that forks off a Java process. I added a `sed` command to disable this forking, because otherwise the script finishes and the container shuts down.
 
 ## How to run
+First we need to let "anyone" connect to our X server. Do so as such:  
+
+    xhost +
+
+Then, run the container:  
+
     docker run -ti \
         --rm \
         --name p5 \
@@ -19,5 +25,6 @@ P5 by default is run by a script that forks off a Java process. I added a `sed` 
 - Enables sound
 
 ## Bugs
-As of now, the sketches that change the renderer are not working. For example, if your code sets the size like `size(300, 300, P2D)` or `size(300, 300, P3D)`, it'll break with the error `Failed to find NEWT Display Class`.  
-Still working on it, and suspecting of the OpenGL drivers.
+- As of now, the sketches that change the renderer are not working. For example, if your code sets the size like `size(300, 300, P2D)` or `size(300, 300, P3D)`, it'll break with the error `Failed to find NEWT Display Class`. Still working on it, and suspecting of the OpenGL drivers.
+- Sound is not properly working
+
